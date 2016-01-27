@@ -291,8 +291,8 @@ void broadcast() {
 	for (i = 0; i < nrpulses; i++) {
 		match = 0;
 		for (x = 0; x < MAX_PULSE_TYPES; x++) {
-			/* We device these numbers by 10 to normalize them a bit */
-			if (((plstypes[x] / 10) - (codes[i] / 10)) <= 2) {
+			if (((plstypes[x] >= codes[i]) && (plstypes[x] - codes[i] <= 20))
+			    || ((plstypes[x] < codes[i]) && (codes[i] - plstypes[x] <= 20))) {
 				/* Every 'space' is followed by a 'pulse'.
 				 * All spaces are stripped to spare
 				 * resources. The spaces can easily be
