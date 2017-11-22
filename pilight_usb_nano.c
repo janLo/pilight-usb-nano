@@ -276,6 +276,10 @@ ISR(TIMER2_COMPA_vect) {
 		putByte('\n');
 		ten_us_counter1 = 0;
 	}
+	if (ten_us_counter > MAX_PULSELENGTH * 2) {
+		nrpulses = 0;
+		ten_us_counter = 0;
+	}
 	sei();
 }
 
@@ -302,7 +306,7 @@ void broadcast() {
 				break;
 			}
 		}
-		if (match == 0) {
+		if (match == 0 && p < MAX_PULSE_TYPES) {
 			plstypes[p++] = codes[i];
 			/* See above */
 			if ((i % 2) == 1) {
