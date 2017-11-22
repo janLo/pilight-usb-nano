@@ -18,11 +18,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
 #include <string.h>
-#include <math.h>
 #include <avr/pgmspace.h>
-#include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
 
@@ -41,7 +38,6 @@ volatile uint32_t maxgaplen = 5100;
 
 const uint16_t MIN_2X_BAUD = F_CPU / (4 * (2 * 0XFFF + 1)) + 1;
 
-#include <util/setbaud.h>
 
 // Code formatting meant for sending
 // on  c:102020202020202020220202020020202200202200202020202020220020202203;p:279,2511,1395,9486;r:5@
